@@ -77,13 +77,51 @@ if (isNaN(n)) {
       isPrime = false;
     } else {
       for (let i = 3; i <= Math.floor(Math.sqrt(n)); i += 2) {
-        console.log('ewe', n, i);
         if (n % i === 0) {
           isPrime = false;
         }
       }
     }
     console.log(n, 'Number is prime?', isPrime);
+  } else {
+    console.log('number should be positive and more than 0');
+  }
+}
+
+// while loop
+
+// Q1 Reverse a number
+
+// method 1; take as a string and do concatination
+if (isNaN(n)) {
+  console.log('Invalid input');
+} else {
+  if (n > 0) {
+    let reverse = '';
+    while (n > 0) {
+      let rem = n % 10;
+      n = Math.floor(n / 10);
+      reverse = reverse + rem;
+    }
+    console.log(n, 'Reverse of a number. Method 1', reverse);
+  } else {
+    console.log('number should be positive and more than 0');
+  }
+}
+
+// method second
+
+if (isNaN(n)) {
+  console.log('Invalid input');
+} else {
+  if (n > 0) {
+    let reverse = 0;
+    while (n > 0) {
+      let rem = n % 10;
+      reverse = reverse * 10 + rem;
+      n = Math.floor(n / 10);
+    }
+    console.log(n, 'Reverse of a number. Method2', reverse);
   } else {
     console.log('number should be positive and more than 0');
   }
