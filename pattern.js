@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
 
-const n = prompt('enter a number');
+const n = Number(prompt('enter a number'));
 
 // Q1.
 // *
@@ -99,7 +99,7 @@ for (let i = 1; i <= n; i++) {
   console.log();
 }
 
-// fine method 
+// fine method
 for (let i = 1; i <= n; i++) {
   for (let j = 1; j <= n * 2 - 1; j++) {
     if (i + j >= Number(n) + 1 && Math.abs(i - j) <= Number(n) - 1) {
@@ -109,4 +109,24 @@ for (let i = 1; i <= n; i++) {
     }
   }
   console.log();
+}
+
+// Q7
+
+//  *       *
+//    *   *
+//      *
+//   *     *
+// *         *
+
+//  work only for odd number
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n; j++) {
+    if (i == j || j + i == n + 1) {
+      process.stdout.write('* ');
+    } else {
+      process.stdout.write('  ');
+    }
+  }
+  console.log('');
 }
