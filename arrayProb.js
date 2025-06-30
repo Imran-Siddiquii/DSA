@@ -61,3 +61,39 @@ moveArr[0] = lastIndex1;
 console.log('====================================');
 console.log(moveArr); // Output: [8, 1, 2, 3, 4, 5, 6, 7]
 console.log('====================================');
+console.log('----------------------------------------------------');
+
+// Q  Move left and right by k element
+
+// move left
+let arr = [1, 2, 3, 4, 5, 6, 7];
+let k = 2;
+let last = arr[0];
+for (let i = 0; i < k; i++) {
+  for (let j = 0; j < arr.length - 1; j++) {
+    arr[j] = arr[j + 1];
+  }
+  arr[arr.length - 1] = last;
+  last = arr[0];
+}
+
+console.log('====================================');
+console.log(arr, 'left move array');
+console.log('====================================');
+
+// move right
+console.log('----------------------------------------------------');
+let arrRight = [1, 2, 3, 4, 5, 6, 7];
+let m = 3;
+let firstEle = arrRight[arrRight.length - 1];
+for (let i = 0; i < m; i++) {
+  for (let j = arrRight.length - 1; j >= 0; j--) {
+    arrRight[j] = arrRight[j - 1];
+  }
+  arrRight[0] = firstEle;
+  firstEle = arrRight[arrRight.length - 1];
+}
+
+console.log('====================================');
+console.log(arrRight, 'right move array');
+console.log('====================================');
