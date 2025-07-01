@@ -1,3 +1,21 @@
+// reverser a array
+
+const reverseArray = [1, 2, 3, 4, 5, 6];
+
+reverseArr(0, reverseArray.length - 1);
+console.log('====================================');
+console.log('reverse Array', reverseArray);
+console.log('====================================');
+function reverseArr(i, j) {
+  while (i < j) {
+    let temp = reverseArray[i]; // temp = reverseArray[0] = 1
+    reverseArray[i] = reverseArray[j]; // reverseArray[0] = reverseArray[5] == 6
+    reverseArray[j] = temp; // reserveArray[5] = 1
+    i++; // 1
+    j--; // 4
+  }
+}
+
 // Q1  [0,1,1,0,1,0,0];  output --> [0,0,0,0,1,1,1];
 
 let array = [0, 1, 1, 0, 1, 0, 0];
@@ -97,3 +115,67 @@ for (let i = 0; i < m; i++) {
 console.log('====================================');
 console.log(arrRight, 'right move array');
 console.log('====================================');
+
+// left move with new space , this method taking extra space in memory which in efficient
+
+let ar = [1, 2, 3, 4, 5];
+let temp = new Array(ar.length);
+
+let r = 3;
+for (let i = 0; i < ar.length; i++) {
+  temp[i] = ar[(i + r) % ar.length];
+}
+console.log('🚀 ~ temp:', temp);
+
+let ark = [1, 2, 3, 4, 5];
+let tempk = new Array(ar.length);
+
+let rk = 3;
+for (let i = 0; i < ark.length; i++) {
+  tempk[(i + rk) % ark.length] = ark[i];
+}
+console.log('🚀 ~ tempk:', tempk);
+
+// new method block reverse method with two pointer very efficient
+
+let aR = [1, 2, 3, 4, 5];
+let q = 2; // move by 2 element
+// left output = [3,4,5,1,2]
+// right output = [4,5,1,2,3]
+
+// left move
+
+aRL(0, q - 1); // [2,1,3,4,5]
+aRL(q, aR.length - 1); //[2,1,5,4,3];
+aRL(0, aR.length - 1); //[3,4,5,1,2]
+function aRL(i, j) {
+  while (i < j) {
+    temp = aR[i];
+    aR[i] = aR[j];
+    aR[j] = temp;
+    i++;
+    j--;
+  }
+}
+console.log(aR, 'left move');
+
+let aRP = [1, 2, 3, 4, 5];
+let s = 2; // move by 2 element
+// left output = [3,4,5,1,2]
+// right output = [4,5,1,2,3]
+
+// left move
+
+aRR(0, aRP.length - 1); //[5,4,3,2,1]
+aRR(0, s - 1); // [4,5,3,2,1]
+aRR(s, aRP.length - 1); //[4,5,1,2,3];
+function aRR(i, j) {
+  while (i < j) {
+    temp = aRP[i];
+    aRP[i] = aRP[j];
+    aRP[j] = temp;
+    i++;
+    j--;
+  }
+}
+console.log(aRP, 'right move');
