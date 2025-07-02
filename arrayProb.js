@@ -179,3 +179,32 @@ function aRR(i, j) {
   }
 }
 console.log(aRP, 'right move');
+
+// sort the color, where 0 represent red, 1 represent white and 2 represent blue
+
+let colorArray = [1, 2, 2, 2, 1, 0, 0, 1, 2];
+
+// expected output = [0,0,1,1,1,2,2,2,2];
+
+let sp = 0;
+let ep = colorArray.length - 1;
+let ck = 0;
+
+while (ck <= ep) {
+  if (colorArray[ck] == 0) {
+    temp = colorArray[ck];
+    colorArray[ck] = colorArray[sp];
+    colorArray[sp] = temp;
+    ck++;
+    sp++;
+  } else if (colorArray[ck] == 2) {
+    temp = colorArray[ck];
+    colorArray[ck] = colorArray[ep];
+    colorArray[ep] = temp;
+    ep--; // no need to increase checkpoint (ck) if ck ==2
+  } else {
+    ck++;
+  }
+}
+
+console.log('🚀 ~ colorArray:', colorArray);
