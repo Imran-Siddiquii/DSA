@@ -208,3 +208,88 @@ while (ck <= ep) {
 }
 
 console.log('🚀 ~ colorArray:', colorArray);
+
+// Q  Trapping Rain Water -->
+
+let rainInputArray = [4, 2, 0, 3, 2, 5];
+
+let leftMax = new Array(rainInputArray.length);
+let rightMax = new Array(rainInputArray.length);
+
+let maxTappingWater = 0;
+
+leftMax[0] = rainInputArray[0];
+rightMax[rightMax.length - 1] = rainInputArray[rainInputArray.length - 1];
+
+for (let i = 1; i < rainInputArray.length; i++) {
+  if (leftMax[i - 1] < rainInputArray[i]) {
+    leftMax[i] = rainInputArray[i];
+  } else {
+    leftMax[i] = leftMax[i - 1];
+  }
+}
+
+for (let j = rainInputArray.length - 2; j >= 0; j--) {
+  if (rightMax[j + 1] < rainInputArray[j]) {
+    rightMax[j] = rainInputArray[j];
+  } else {
+    rightMax[j] = rightMax[j + 1];
+  }
+}
+
+for (let i = 0; i < rainInputArray.length; i++) {
+  let min = Math.min(leftMax[i], rightMax[i]);
+  maxTappingWater += min - rainInputArray[i];
+}
+console.log('🚀 ~ leftMax:', leftMax);
+console.log('🚀 ~ rightMax:', rightMax);
+console.log('🚀 ~ maxTappingWater:', maxTappingWater);
+
+var trap = function (height) {
+  // let n = height.length;
+  // let leftMax = new Array(n).fill(0);
+  // let rightMax = new Array(n).fill(0);
+  // let totalWater = 0;
+
+  // leftMax[0] = height[0];
+
+  // for(let i=1;i<n;i++){
+  //     leftMax[i] = Math.max(height[i],leftMax[i-1]);
+  // }
+
+  // rightMax[n-1] = height[n-1];
+  // for(let i=n-2; i>=0;i--){
+  //     rightMax[i]= Math.max(height[i],rightMax[i+1]);
+  // }
+
+  // for(let i=0;i<n;i++){
+  //     totalWater += Math.min(leftMax[i],rightMax[i])-height[i]
+  // }
+
+  // return totalWater;
+
+  let n = height.length;
+  let left = 0;
+  let right = n - 1;
+  let waterTapped = 0;
+  let lmax = 0;
+  let rmax = 0;
+
+  while (left < right) {
+    lmax = Math.max(lmax, height[left]);
+    rmax = Math.max(rmax, height[right]);
+
+    if (lmax < rmax) {
+      waterTapped += lmax - height[left];
+      left++;
+    } else {
+      waterTapped += rmax - height[right];
+      right--;
+    }
+  }
+  return waterTapped;
+};
+
+console.log('====================================');
+console.log(trap([4, 2, 0, 3, 2, 5]));
+console.log('====================================');
