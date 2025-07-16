@@ -66,3 +66,50 @@ function fiboNTerm(k) {
 }
 
 console.log(fiboNTerm(7));
+
+// Highest common factor
+
+let p = 100;
+q = 20;
+
+while (p != q) {
+  if (p > q) {
+    p = p - q;
+  } else {
+    q = q - p;
+  }
+}
+console.log('====================================');
+console.log(p, q);
+console.log('====================================');
+
+// recursion method
+
+function HCD(x, y) {
+  console.log('🚀 ~ HCD ~ x:', x, y);
+  if (x == y) return x;
+  if (x > y) {
+    x = x - y;
+  } else {
+    y = y - x;
+  }
+  return HCD(x, y);
+}
+
+console.log('====================================');
+console.log(HCD(125, 20));
+console.log('====================================');
+
+// efficient method
+function HCD1(w, z) {
+  if (z == 0) return w;
+  return HCD1(z, w % z); // w=30 z= 50%30 = 20,   w=20, z = 30%20=10, w=10, z=20%10=0 == answer w=10
+}
+
+let w = 125,
+  z = 20;
+console.log('1====================================');
+console.log(HCD1(w, z));
+console.log('====================================');
+
+//  time complexity  log(max(w,z))
