@@ -113,3 +113,21 @@ console.log(HCD1(w, z));
 console.log('====================================');
 
 //  time complexity  log(max(w,z))
+
+// count prime number using Seive of Eratosthenes Algorithm
+
+let primeNumber = 100;
+let primeArray = new Array(primeNumber + 1).fill(true);
+
+for (let i = 2; i <= Math.floor(Math.sqrt(primeNumber)); i++) {
+  if (primeArray[i] == true) {
+    for (j = i * i; j <= primeNumber; j += i) {
+      primeArray[j] = false;
+    }
+  }
+}
+
+for (let i = 2; i < primeArray.length; i++) {
+  if (primeArray[i]) process.stdout.write(i + ' ');
+}
+console.log('🚀 ~ primeArray:');
